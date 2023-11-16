@@ -6,6 +6,11 @@
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "msvc-x64",
+            "includePath": [ 
+                "${workspaceFolder}\\Intermediate\\**", 
+                "${workspaceFolder}\\Plugins\\**", 
+                "${workspaceFolder}\\Source\\**" 
+            ], 
             "configurationProvider": "epic.ue",
             "compileCommands": "E:\\Game\\UnrealEngine_projects\\ToonTanks\\.vscode\\compileCommands_ToonTanks.json"
         },
