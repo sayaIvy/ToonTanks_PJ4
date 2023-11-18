@@ -24,7 +24,8 @@ AProjectile::AProjectile()
 void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit); // デリゲート
 }
 
 // Called every frame
@@ -34,3 +35,11 @@ void AProjectile::Tick(float DeltaTime)
 
 }
 
+// デリゲートのコールバック関数
+void AProjectile::OnHit(UPrimitiveComponent *HitComp, AActor *OtherActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &Hit)
+{
+	UE_LOG(LogTemp, Warning, TEXT("OnHit"));
+	UE_LOG(LogTemp, Warning, TEXT("HitComp: %s"), *HitComp->GetName());
+	UE_LOG(LogTemp, Warning, TEXT("OtherActor: %s"), *OtherActor->GetName());
+	UE_LOG(LogTemp, Warning, TEXT("OtherComp: %s"), *OtherComp->GetName());
+}

@@ -28,6 +28,10 @@ private:
 	class UProjectileMovementComponent* ProjectileMovementComponent;
 
 public:	
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
