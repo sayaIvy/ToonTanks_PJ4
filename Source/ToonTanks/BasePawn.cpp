@@ -6,6 +6,7 @@
 
 #include "Components/StaticMeshComponent.h" //　This is Guarded, but to improve the editor readabiity
 #include "Kismet/GameplayStatics.h"
+#include "Particles/ParticleSystem.h"
 
 #include "Projectile.h"
 
@@ -32,7 +33,10 @@ ABasePawn::ABasePawn()
 
 void ABasePawn::HandleDestruction()
 {
-	// override
+	if(DeathParticles)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticles, GetActorLocation(), GetActorRotation());
+	}
 }
 
 // Called when the game starts or when spawned
