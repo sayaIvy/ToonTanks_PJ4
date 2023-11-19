@@ -21,10 +21,10 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-  if(PlayerControllerRef)
+  if(TankPlayerController)
   {
     FHitResult HitResult;
-    PlayerControllerRef->GetHitResultUnderCursor(
+    TankPlayerController->GetHitResultUnderCursor(
       ECollisionChannel::ECC_Visibility,
       false,
       HitResult
@@ -45,11 +45,18 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
   PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ATank::Fire);
 }
 
+void ATank::HandleDestruction()
+{
+  Super::HandleDestruction();
+  SetActorHiddenInGame(true);
+  SetActorTickEnabled(false);
+}
+
 void ATank::BeginPlay()
 {
   Super::BeginPlay();
 
-  PlayerControllerRef = Cast<APlayerController>(GetController());
+  TankPlayerController = Cast<APlayerController>(GetController());
 }
 
 void ATank::Move(float Value)

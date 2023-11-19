@@ -30,6 +30,11 @@ ABasePawn::ABasePawn()
 
 }
 
+void ABasePawn::HandleDestruction()
+{
+	// override
+}
+
 // Called when the game starts or when spawned
 void ABasePawn::RotateTurret(FVector LookAtTarget)
 {
